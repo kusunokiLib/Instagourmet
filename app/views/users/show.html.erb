@@ -10,11 +10,16 @@
     <tr>
       <td><%= @user.id %></td>
       <td><%= @user.name %></td>
-      <td><%= @user.email %></td>    
+      <td><%= @user.email %></td>
     </tr>
   </tbody>
 </table>
 
 <% @posts.each do |post| %>
+ <% if post.photo? %>
+　　<%= image_tag post.photo.url %>
+　<% else %>
+　　
+　<% end %>
   <p><%= post.text %></p>
 <% end %>
