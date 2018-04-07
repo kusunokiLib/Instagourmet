@@ -1,0 +1,17 @@
+<h2>新規投稿</h2>
+
+<%= form_for(@post, url: user_posts_path, html: { method: :post }) do |f| %>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+
+   <div class="field">
+    <%= f.hidden_field :user_id, :value => params[:user_id] %><br />
+  </div>
+
+  <div class="actions">
+    <%= f.submit "create" %>
+  </div>
+<% end %>
