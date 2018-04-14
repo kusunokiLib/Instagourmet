@@ -15,11 +15,6 @@
   </tbody>
 </table>
 
-<% @user.posts.each do |post| %>
- <% if post.photo? %>
-　　<%= image_tag post.photo.url %>
-　<% else %>
-　　
-　<% end %>
-  <p><%= post.text %></p>
+<% @user.following.each do |following| %>　　
+  <p><%= following.name %></p>
 <% end %>
