@@ -1,19 +1,6 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @user.id %></td>
-      <td><%= @user.name %></td>
-      <td><%= @user.email %></td>
-    </tr>
-  </tbody>
-</table>
+<%= render '/users/shared/user_info' %>
+
+<%= render '/users/shared/stats' %>
 
 <% @user.posts.each do |post| %>
  <% if post.photo? %>

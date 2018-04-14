@@ -2,6 +2,6 @@
 
 <%= render '/users/shared/stats' %>
 
-<% @user.following.each do |following| %>　　
-  <p><%= following.name %></p>
+<% @user.followers.each do |followers| %>　　
+  <p><%= followers.name %></p>
 <% end %>
