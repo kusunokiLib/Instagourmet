@@ -3,5 +3,5 @@
 <%= render '/users/shared/stats' %>
 
 <% @user.followers.each do |followers| %>　　
-  <p><%= followers.name %></p>
+  <div><%= link_to followers.name, user_path(followers.id) %></div>
 <% end %>

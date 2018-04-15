@@ -24,9 +24,9 @@ end
 
 # マイクロポスト
 users = User.order(:created_at).take(6)
-50.times do
+10.times do
 content = Faker::Lorem.sentence(5)
-users.each { |user| user.posts.create(text: content) }
+users.each { |user| user.posts.create(text: content, photo: open("#{Rails.root}/public/uploads/post/photo/fd401516.jpg") )}
 end
 
 # リレーションシップ
