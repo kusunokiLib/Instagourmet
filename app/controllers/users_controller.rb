@@ -15,4 +15,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def favorite_posts
+    @user = User.find_by(id: params[:id])
+  end
+
 end

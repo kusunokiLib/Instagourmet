@@ -1,0 +1,7 @@
+<%= render '/users/shared/user_info' %>
+
+<%= render '/users/shared/stats' %>
+
+<% @user.favorite_posts.each do |post| %>
+  <div><%= link_to post.text, user_post_path(post.user_id, post.id) %></div>
+<% end %>

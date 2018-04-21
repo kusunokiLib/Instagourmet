@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, :through => :favorites, source: :post
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -13,6 +15,15 @@ class User < ApplicationRecord
                                   dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  # Postをfavoriteする
+  def favorite(post)
+    favorites.create(post_id: post.id)
+  end
+
+  def unfavorite(post)
+    favorites.find_by(post_id: post.id).destroy
+  end
 
   # ユーザーをフォローする
   def follow(other_user)
