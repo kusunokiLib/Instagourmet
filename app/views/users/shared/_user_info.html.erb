@@ -1,16 +1,21 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @user.id %></td>
-      <td><%= @user.name %></td>
-      <td><%= @user.email %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="user-info">
+    <div class="left">
+       <%= image_tag('sample.jpg', class: 'user-icon') %>
+        <p class="user-name"><%= @user.name %></p>
+    </div>
+    <div class="right">
+      <a href="<%= following_user_path(@user) %>" class="button">
+          フォロー <%= @user.following.count %>
+      </a>
+      <a href="<%= followers_user_path(@user) %>" class="button">
+          フォロワー <%= @user.followers.count %>
+      </a>
+        <a href='#' class='button'>編集</a>
+        <p>
+            ああああああああああああああああああああ
+            あああああああああああああああああああ
+            あああ
+            あ
+        </p>
+    </div>
+</div>

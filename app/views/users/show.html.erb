@@ -1,12 +1,22 @@
 <%= render '/users/shared/user_info' %>
 
-<%= render '/users/shared/stats' %>
-
-<% @user.posts.each do |post| %>
- <% if post.photo? %>
-　　<%= image_tag post.photo.url %>
-　<% else %>
-　　
-　<% end %>
-  <p><%= post.text %></p>
-<% end %>
+<div class='main-wrapper'>
+  <div class="contents">
+    <div class="tabs">
+        <p class="tab selected">投稿</p>
+        <p class="tab">食べたい</p>
+    </div>
+    <div class="posts">
+      <% @user.posts.each do |post| %>
+        <% if post.photo? %>
+          <%= image_tag(post.photo.url, class: 'post-image') %>
+          <% else %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="float-button">
+    <a href='#' class="button-circle"><i class="fas fa-search fa-2x"></i></a>
+    <a href='#' class="button-circle"><i class="fas fa-plus-circle fa-2x"></i></a>
+</div>

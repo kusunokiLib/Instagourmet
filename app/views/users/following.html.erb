@@ -1,7 +1,5 @@
 <%= render '/users/shared/user_info' %>
 
-<%= render '/users/shared/stats' %>
-
 <% @user.following.each do |following| %>　　
   <div><%= link_to following.name, user_path(following.id) %></div>
 <% end %>

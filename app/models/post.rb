@@ -3,5 +3,5 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :favorites
-  has_many :user, :through => :favorites
+  has_many :favorite_user, :through => :favorites, source: :user
 end
