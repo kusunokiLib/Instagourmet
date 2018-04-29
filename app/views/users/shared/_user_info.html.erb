@@ -10,7 +10,13 @@
       <a href="<%= followers_user_path(@user) %>" class="button">
           フォロワー <%= @user.followers.count %>
       </a>
-        <a href='#' class='button'>編集</a>
+        <% if current_user %>
+          <% if @user == current_user%>
+            <a href='#' class='button'>編集</a>
+          <% else %>
+            <a href='#' class='button'>友達になる</a>
+          <% end %>
+        <% end %>
         <p>
             ああああああああああああああああああああ
             あああああああああああああああああああ

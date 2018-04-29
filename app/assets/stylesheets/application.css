@@ -37,6 +37,7 @@ a,a:visited{
     position: fixed;
     z-index: 1;
     box-shadow: 0 0 3px black;
+    box-sizing: border-box;
 }
 .header h1{
   display: inline;
@@ -58,12 +59,16 @@ a,a:visited{
     height: 90%;
     vertical-align: middle;
 }
+.header .login-out{
+  float: right;
+}
 .main-wrapper{
   width: 750px;
   margin: 0 auto;
+  padding-top: 80px;
 }
 .user-info{
-    padding-top: 80px;
+  
 }
 .user-info .left{
     float: left;
@@ -92,6 +97,7 @@ img.user-icon{
     padding-left: 250px;
 }
 .button{
+  margin: 0 5px;
   padding: 5px 10px;
   opacity: 0.5;
   border: 1px solid black;

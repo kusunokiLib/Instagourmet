@@ -1,4 +1,9 @@
 <header class="header">
     <i class="fas fa-utensils"></i>
       <h1><a href='#'>Instagourmet</a></h1>
+      <% if current_user %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class: "login-out button" %>
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path, method: "get", class: "login-out button" %>
+      <% end %>
 </header>
