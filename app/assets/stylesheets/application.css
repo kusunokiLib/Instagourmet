@@ -147,6 +147,8 @@ img.user-icon{
 }
 .posts{
     display: inline-flex;
+    min-height: 200px;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
