@@ -1,6 +1,6 @@
 <header class="header">
     <i class="fas fa-utensils"></i>
-      <h1><a href='#'>Instagourmet</a></h1>
+      <h1><a href='<%= root_path %>'>Instagourmet</a></h1>
       <% if current_user %>
         <%= link_to "ログアウト", destroy_user_session_path, method: "delete", class: "login-out button" %>
       <% else %>
