@@ -2,8 +2,8 @@
 
 <div class="contents">
   <div class="tabs">
-      <p class="tab selected">投稿</p>
-      <p class="tab">食べたい</p>
+  <%= link_to "投稿", user_path(@user.id), class: "tab selected" %>
+  <%= link_to "食べたい", favorite_posts_user_path(@user.id), class: "tab" %>
   </div>
   <div class="posts">
     <% @user.posts.each do |post| %>

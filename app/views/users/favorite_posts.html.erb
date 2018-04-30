@@ -1,7 +1,20 @@
 <%= render '/users/shared/user_info' %>
 
-<%= render '/users/shared/stats' %>
+<div class="contents">
+  <div class="tabs">
+  <%= link_to "投稿", user_path(@user.id), class: "tab" %>
+  <%= link_to "食べたい", favorite_posts_user_path(@user.id), class: "tab selected" %>
+  </div>
+    <div class="posts">
+    <% @user.favorite_posts.each do |post| %>
+      <% if post.photo? %>
+        <a href = "<%= user_post_path(@user.id, post.id) %>" >
+          <%= image_tag(post.photo.url, class: 'post-image') %>
+        </a>
+        <% else %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
 
-<% @user.favorite_posts.each do |post| %>
-  <div><%= link_to post.text, user_post_path(post.user_id, post.id) %></div>
-<% end %>
+<%= render '/users/shared/footer' %>
