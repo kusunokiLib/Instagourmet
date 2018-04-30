@@ -29,6 +29,7 @@ a{
 a,a:visited{
   color: black;
 }
+
 .header{
     width: 100%;
     height: 50px;
@@ -64,12 +65,17 @@ a,a:visited{
 }
 .main-wrapper{
   width: 750px;
+  height: 100%;
   margin: 0 auto;
   padding-top: 80px;
+  box-sizing: border-box;
 }
-.user-info{
-  
+.main-wrapper:after{
+  content: "";
+  display: block;
+  clear: both;
 }
+
 .user-info .left{
     float: left;
     margin-left: 20px;
@@ -186,4 +192,43 @@ img.post-image{
   top: 15px;
   left: 15px;
   color: black;
+}
+
+/* login-page */
+.form-container{
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form label{
+  display: inline-block;
+  width: 20%;
+}
+
+.login-left{
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 100px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+.login-left .title{
+  font-size: 3rem;
+}
+.login-left .introduction{
+  font-size: 1.5rem;
+}
+.login-right{
+  float: right;
+  width: 50%;
+  height: 100%;
 }
