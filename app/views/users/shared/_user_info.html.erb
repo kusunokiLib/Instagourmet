@@ -13,8 +13,10 @@
         <% if current_user %>
           <% if @user == current_user%>
             <a href='#' class='button'>編集</a>
-          <% else %>
-            <a href='#' class='button'>友達になる</a>
+          <% elsif @is_followed%>
+            <%= link_to 'フォローをやめる', unfollow_user_path(current_user, @user), method: :post, class: 'button' %>
+          <% else%>
+            <%= link_to 'フォローする', follow_user_path(current_user, @user), method: :post, class: 'button' %>
           <% end %>
         <% end %>
         <p>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       get :favorite_posts
+      post 'follow/:followed_id', to: 'users#follow' , as: 'follow'
+      post 'unfollow/:followed_id', to: 'users#unfollow', as: 'unfollow'
     end
     resources :posts
   end
