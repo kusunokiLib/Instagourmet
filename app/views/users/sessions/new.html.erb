@@ -8,18 +8,31 @@
     <div class="form-container">
         <div class="login-form">
             <h1>ログイン</h1>
-            <form>
-                <p>
-                    <label>氏名</label><input type="text">
-                </p>
-                <p>
-                    <label>ID</label><input type="text">
-                </p>
-                <p>
-                    <label>パス</label><input type="text">
-                </p>
-                <input type="checkbox">この内容を記録しますか？
-            </form>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
+
+              <% if devise_mapping.rememberable? -%>
+                <div class="field">
+                  <p>
+                    <%= f.check_box :remember_me %>
+                    この内容を記憶しますか？
+                  </p>
+                </div>
+              <% end -%>
+
+              <div class="actions">
+                <%= f.submit "Log in" %>
+              </div>
+            <% end %>
+
         </div>
     </div>
   <div>
