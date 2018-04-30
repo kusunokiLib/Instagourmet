@@ -31,6 +31,10 @@ class User < ApplicationRecord
     favorites.find_by(post_id: post.id).destroy
   end
 
+  def favorite?(post)
+    favorite_posts.include?(post)
+  end
+
   # ユーザーをフォローする
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)

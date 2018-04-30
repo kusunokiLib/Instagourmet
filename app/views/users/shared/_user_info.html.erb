@@ -13,9 +13,9 @@
         <% if current_user %>
           <% if @user == current_user%>
             <%= link_to '編集', edit_user_path, class: 'button' %>
-          <% elsif @is_followed%>
+          <% elsif @is_followed %>
             <%= link_to 'フォローをやめる', unfollow_user_path(current_user, @user), method: :post, class: 'button' %>
-          <% else%>
+          <% else %>
             <%= link_to 'フォローする', follow_user_path(current_user, @user), method: :post, class: 'button' %>
           <% end %>
         <% end %>

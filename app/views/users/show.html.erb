@@ -8,7 +8,9 @@
   <div class="posts">
     <% @user.posts.each do |post| %>
       <% if post.photo? %>
-        <%= image_tag(post.photo.url, class: 'post-image') %>
+        <a href = "<%= user_post_path(@user.id, post.id) %>" >
+          <%= image_tag(post.photo.url, class: 'post-image') %>
+        </a>
         <% else %>
         <% end %>
     <% end %>

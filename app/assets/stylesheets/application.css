@@ -112,6 +112,9 @@ img.user-icon{
 .button:hover{
   opacity: 1;
 }
+.button-on{
+  background-color: red;
+}
 
 .contents{
   position: relative;

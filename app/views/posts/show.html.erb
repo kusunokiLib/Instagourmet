@@ -1,0 +1,7 @@
+<% if current_user.favorite?(@post) %>
+  <%= link_to '食べたくない!', user_post_unfavorite_path(current_user, @post.id), method: :post, class: 'button button-on' %>
+<% else %>
+  <%= link_to '食べたい!', user_post_favorite_path(current_user, @post.id), method: :post, class: 'button' %>
+<% end %>
+<%= image_tag(@post.photo.url, class: 'post-image') %>
+<%= @post.text %>

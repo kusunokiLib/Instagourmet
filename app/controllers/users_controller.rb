@@ -22,13 +22,13 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @followed = User.find(params[:followed_id])
+    @followed = User.find(params[:id])
     @user.follow(@followed)
     redirect_to user_path(@followed)
   end
 
   def unfollow
-    @followed = User.find(params[:followed_id])
+    @followed = User.find(params[:id])
     @user.unfollow(@followed)
     redirect_to user_path(@followed)
   end
@@ -39,6 +39,18 @@ class UsersController < ApplicationController
 
   def followers
     @is_followed = Relationship.exists?(follower_id: current_user.id, followed_id: @user.id)
+  end
+
+  def favorite
+    @user = User.find_by(id: params[:user_id])
+    @user.favorite(Post.find(params[:post_id]))
+    redirect_to user_post_path(params[:user_id], params[:post_id])
+  end
+
+  def unfavorite
+    @user = User.find_by(id: params[:user_id])
+    @user.unfavorite(Post.find(params[:post_id]))
+    redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 
   def favorite_posts
