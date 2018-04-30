@@ -195,10 +195,25 @@ img.post-image{
 }
 
 /* login-page */
+.static-wrapper{
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/salad.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.static-wrapper:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+
+
 .form-container{
   width: 100%;
   height: 100%;
-  background-image: url(/images/background.jpg);
+  /*background-image: url(/images/background.jpg);*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -206,6 +221,12 @@ img.post-image{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login-form{
+  padding: 30px;
+  border-radius: 20%;
+  background-color: rgba(233, 222, 222, 0.747);
 }
 
 .login-form label{
