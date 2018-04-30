@@ -1,0 +1,26 @@
+<h1>編集</h1>
+<%= form_for(@user, url: user_path(@user)) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: @user.name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: @user.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %>
+    <%= f.text_field :text, autofocus: true, autocomplete: @user.text %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "done" %>
+  </div>
+<% end %>

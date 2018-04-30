@@ -1,6 +1,6 @@
 <div class="user-info">
     <div class="left">
-       <%= image_tag('sample.jpg', class: 'user-icon') %>
+       <%= image_tag(@user.image, class: 'user-icon') %>
         <p class="user-name"><%= @user.name %></p>
     </div>
     <div class="right">
@@ -12,7 +12,7 @@
       </a>
         <% if current_user %>
           <% if @user == current_user%>
-            <a href='#' class='button'>編集</a>
+            <%= link_to '編集', edit_user_path, class: 'button' %>
           <% elsif @is_followed%>
             <%= link_to 'フォローをやめる', unfollow_user_path(current_user, @user), method: :post, class: 'button' %>
           <% else%>
@@ -20,10 +20,7 @@
           <% end %>
         <% end %>
         <p>
-            ああああああああああああああああああああ
-            あああああああああああああああああああ
-            あああ
-            あ
+            <%= @user.text %>
         </p>
     </div>
 </div>
