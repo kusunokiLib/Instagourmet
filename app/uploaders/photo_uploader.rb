@@ -50,7 +50,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #  process :resize_to_limit => [300, 300]
   #end
 
-   # 日付(20131001.jpgみたいなファイル名)で保存する
   def filename
     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
