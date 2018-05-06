@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Instagourmet</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <meta name="csrf-token" content="F6dek0xG3Kl/8fc8wlAdAdwWNgBhJ/O8da3ziVQG5y9yOxO7QUS8QVbro9+pLYF9/+qkHXQtrSwIcUteffGd1A==" />
+    <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
-  </head>
-
-  <body>
-    <%= render '/users/shared/header' %>
-    <div class='main-wrapper'>
-      <%= yield %>
-    </div>
-    <%= render '/users/shared/footer' %>
-  </body>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id='app'></div>
+  <script src='/bundle.js'></script>
+</body>
 </html>
