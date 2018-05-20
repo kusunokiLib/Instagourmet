@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 
   mount_uploader :image, PhotoUploader
 
@@ -49,4 +52,9 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def on_jwt_dispatch(token, payload)
+    self.update_attribute('jti',token)
+  end
+  
 end
