@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    render 'vue', layout: false
+    render 'index', layout: false
   end
 end
