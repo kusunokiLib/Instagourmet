@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508161413) do
+ActiveRecord::Schema.define(version: 20180507164839) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.string "user_id"
+    t.string "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,9 +55,7 @@ ActiveRecord::Schema.define(version: 20180508161413) do
     t.string "image"
     t.string "text"
     t.string "auth_token"
-    t.string "jti", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

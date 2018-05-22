@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:index, :show]
 
   def index
     @posts = User.find(params[:user_id]).posts
@@ -8,5 +9,19 @@ class Api::PostsController < ApplicationController
   def show
 
   end
+
+  def create
+    @post = Post.new(post_params)
+    if @post.save!
+    render json: {}, status => 200
+    else
+      render json: { error: t('post_create_error') }, status: :unprocessable_entity
+    end
+  end
+
+  private
+    def post_params
+      params.require(:post).permit(:text, :user_id, :photo)
+    end
 
 end

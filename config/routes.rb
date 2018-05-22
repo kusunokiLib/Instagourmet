@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  devise_for :user, only: []
+
+  namespace :api, defaults: { format: :json } do
+    resource :login, only: [:create], controller: :sessions
+    resource :users, only: [:create]
+  end
+
   root to: 'home#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show] do
         get :following, :followers
         get :favorite_posts
-      resources :posts, only: [:index, :show] do
+      resources :posts, only: [:index, :show, :create] do
       end
     end
   end

@@ -1,11 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  include Devise::JWT::RevocationStrategies::JTIMatcher
+  #include Devise::JWT::RevocationStrategies::JTIMatcher
 
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :jwt_authenticatable, jwt_revocation_strategy: self
+         :recoverable, :rememberable, :trackable, :validatable
+
+  after_create :update_auth_token!
 
   mount_uploader :image, PhotoUploader
 
@@ -55,6 +56,11 @@ class User < ApplicationRecord
 
   def on_jwt_dispatch(token, payload)
     self.update_attribute('jti',token)
+  end
+
+  def update_auth_token!
+    self.auth_token = "#{self.id}:#{Devise.friendly_token}"
+    save
   end
   
 end
