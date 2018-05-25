@@ -19,6 +19,12 @@ class Api::PostsController < ApplicationController
     end
   end
 
+  def favorite_post
+    @user = User.find_by(id: params[:user_id])
+    @posts = @user.favorite_posts
+    render :json => @posts
+  end
+
   private
     def post_params
       params.require(:post).permit(:text, :user_id, :photo)

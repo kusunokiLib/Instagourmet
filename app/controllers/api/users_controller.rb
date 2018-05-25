@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  skip_before_action :authenticate_user_from_token!
+  skip_before_action :authenticate_user_from_token!, except: [:create, :follow, :unfollow]
 
   #GET
   def index
@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
     render :json => @posts
   end
 
-    # POST
+  # POST
   # Create an user
   def create
     @user = User.new user_params
@@ -37,6 +37,25 @@ class Api::UsersController < ApplicationController
     else
       render json: { error: t('user_create_error') }, status: :unprocessable_entity
     end
+  end
+
+  def follow
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    @followed = User.find_by(params[:id])
+    @user.follow(@followed)
+    render json: { status: 'success' }, root: nil
+  end
+
+  def unfollow
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    @followed = User.find_by(params[:id])
+    @user.unfollow(@followed)
+    render json: { status: 'success' }, root: nil
+  end
+
+  def following?
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    render json: { isfollowing: @user.following?(User.find_by(params[:id])) }, root: nil
   end
 
   private
