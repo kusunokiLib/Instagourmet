@@ -41,21 +41,24 @@ class Api::UsersController < ApplicationController
 
   def follow
     @user = User.find_by(auth_token: request.headers['Authorization'])
-    @followed = User.find_by(params[:id])
+    @followed = User.find_by(id: params[:user_id])
     @user.follow(@followed)
-    render json: { status: 'success' }, root: nil
+    render json: { isfollowing: true }, root: nil
   end
 
   def unfollow
     @user = User.find_by(auth_token: request.headers['Authorization'])
-    @followed = User.find_by(params[:id])
+    @followed = User.find_by(id: params[:user_id])
     @user.unfollow(@followed)
-    render json: { status: 'success' }, root: nil
+    render json: { isfollowing: false }, root: nil
   end
 
   def following?
     @user = User.find_by(auth_token: request.headers['Authorization'])
-    render json: { isfollowing: @user.following?(User.find_by(params[:id])) }, root: nil
+    if !@user
+      render json: { status: 'false' }, status: 400
+    end
+    render json: { isfollowing: @user.following?(User.find_by(id: params[:user_id])) }, root: nil
   end
 
   private

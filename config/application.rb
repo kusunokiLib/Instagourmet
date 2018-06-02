@@ -18,7 +18,8 @@ module Instagourmet
     config.action_dispatch.default_headers = {
       'Access-Control-Allow-Credentials' => 'true',
       'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => '*'
+      'Access-Control-Request-Method' => '*',
+      'Access-Control-Allow-Headers' => '*'
     }
   end
 end
