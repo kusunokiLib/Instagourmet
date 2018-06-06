@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def favorite?(post)
-    favorite_posts.include?(post)
+    return favorite_posts.include?(post)
   end
 
   # ユーザーをフォローする

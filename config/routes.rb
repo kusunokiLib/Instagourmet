@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     post '/users/follow/:user_id', to: 'users#follow'
     post '/users/unfollow/:user_id', to: 'users#unfollow'
     get '/users/isfollowing/:user_id', to: 'users#following?'
+    post '/users/favorite/:post_id', to: 'users#favorite'
+    post '/users/unfavorite/:post_id', to: 'users#unfavorite'
+    get '/users/isfavorite/:post_id', to: 'users#favorite?'
 
     resources :users, only: [:index, :show] do
         get :following, :followers

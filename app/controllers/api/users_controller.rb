@@ -61,6 +61,29 @@ class Api::UsersController < ApplicationController
     render json: { isfollowing: @user.following?(User.find_by(id: params[:user_id])) }, root: nil
   end
 
+  def favorite
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    @post = Post.find_by(id: params[:post_id])
+    @user.favorite(@post)
+    render json: { status: 'true' }
+  end
+
+  def unfavorite
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    @post = Post.find_by(id: params[:post_id])
+    @user.unfavorite(@post)
+    render json: { status: 'true' }
+  end
+
+  def favorite?
+    @user = User.find_by(auth_token: request.headers['Authorization'])
+    if @user == nil
+      render json: { status: 'false' }, status: 400
+    else
+      render json: { isFavorite: @user.favorite?(Post.find_by(id: params[:post_id])) }, root: nil
+    end
+  end
+
   private
 
     def user_params

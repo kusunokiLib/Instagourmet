@@ -12,8 +12,10 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save!
-    render json: {}, status => 200
+    # @user = User.find(params[:user_id])
+    # @user.posts.create!(post_params)
+    if @post
+      render json: @post, status => 200
     else
       render json: { error: t('post_create_error') }, status: :unprocessable_entity
     end
